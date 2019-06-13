@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
   end
   helper_method :cart_subtotal_cents
 
+  def order_products
+    @order_products ||= @order.line_items.all.map {|item|  {product:item.product, quantity: item.quantity}} 
+  end
+  helper_method :order_products
 
   def update_cart(new_cart)
     cookies[:cart] = {
