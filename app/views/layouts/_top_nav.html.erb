@@ -44,16 +44,16 @@
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
           <% end %>
         </li>
-        <% if ( @session ) %>
+        <% if ( current_user ) %>
           <li>
-            <%= link_to 'Logout', [:destroy, :session], class: 'btn btn-link' %>
+            <%= link_to "Logout", '/logout' %>
           </li>
         <% else %>
           <li>
-            <%= link_to 'Login', [:new, :session], class: 'btn btn-link' %>
+            <%= link_to 'Login', '/login', class: 'btn btn-link' %>
           </li>
           <li>
-            <%= link_to 'Sing up', [:new, :user], class: 'btn btn-link' %>
+            <%= link_to 'Sing up', '/signup', class: 'btn btn-link' %>
           </li>
         <% end %>     
       </ul>
