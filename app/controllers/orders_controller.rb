@@ -53,6 +53,7 @@ class OrdersController < ApplicationController
       )
     end
     order.save!
+    OrderReceipt.order_placed(order).deliver_later
     order
   end
 
