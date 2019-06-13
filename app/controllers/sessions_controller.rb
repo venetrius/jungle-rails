@@ -3,14 +3,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:session][:email])
+    user = User.find_by_email(params[:email])
     puts 'email'
     puts params[:email]
-    if user && user.authenticate(params[:session][:password])
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to '/'
     else
-      redirect_to '/login'
+      @error = 'Wrong emal adress or password!'
+      render '/sessions/new'
     end
   end
 

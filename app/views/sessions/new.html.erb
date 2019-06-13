@@ -3,25 +3,20 @@
   <header class="page-header">
     <h1> Login </h1>
   </header>
-
   <div class="row">
+    <% if ( @error ) %>
+      <div class="alert alert-danger">
+        <strong>  <%= @error %> </strong>
+      </div>
+    <% end %>
     <div class="col-sm-6 col-sm-offset-1">
-      <%= form_for :session, url: '/sessions' do |form| %>
-          <% # TODO add error listing %>
-
-        <div class="form-group">
-          <%= form.label :email %>
-          <%= form.email_field :email, class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= form.label :password %>
-          <%= form.password_field :password, class: 'form-control' %>
-        </div>
-
-        <%= form.submit 'Login!', class: 'btn btn-primary' %>
+      <%= form_tag '/login' do %>
+        Email: <%= text_field_tag :email %> 
+        </br>
+        Password: <%= password_field_tag :password %>
+        </br>
+        <%= submit_tag "Submit" %>
       <% end %>
     </div>
   </div>
-
 </section>
