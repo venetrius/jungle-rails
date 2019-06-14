@@ -132,6 +132,13 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+User.create!({
+  first_name: "a",
+  last_name: "a",
+  email: "a@a",
+  password_digest: "$2a$10$wiWxYSCqw/nxUgTx4qb6OubJVNHeNRtT4wnSUKrbukko5q.0t30nG"
+})
+
 puts 'Re-creating Ratings ...'
 Rating.destroy_all
 Rating.create!({
