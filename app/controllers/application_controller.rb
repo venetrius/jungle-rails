@@ -44,8 +44,12 @@ class ApplicationController < ActionController::Base
 
   def http_authenticate
      authenticate_or_request_with_http_basic do |username, password|
-        username == ENV['USERNAME'] && password == ENV['PASSWORD']
-        return true
+        puts  Rails.configuration.admin[:user_name]
+        puts  Rails.configuration.admin[:password]
+        if username == Rails.configuration.admin[:user_name] && Rails.configuration.admin[:password]
+          puts 'ok'
+          return true
+        end
     end
 end
 
