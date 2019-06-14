@@ -23,9 +23,29 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
         </dl>
+      </div>            
+    </div>
+    <%# Rating list %>
+    <div class="row">
+      <div class="col-sm-2">
+        </div>
+      <div class="col-sm-10">
+        <% product_ratings.each do |rating| %>
+            <dl class="dl-horizontal">
+            <dt> <%= rating[:rating] %> </dt>
+            <dd> <%= rating[:user] %> </dd>
+            <dt> Description </dt>
+            <dd> <%= rating[:description] %> </dd>
+            <dt> Date </dt>
+            <dd> <%= rating[:created_at] %> </dd>
+          </dl>
+        <%end %>
       </div>
     </div>
 
   </article>
 
+
+
 </section>
+
