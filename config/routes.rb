@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    resources :ratings, only: [:create]
+  end
+
   resources :categories, only: [:show]
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
