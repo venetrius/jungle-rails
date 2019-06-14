@@ -25,11 +25,36 @@
         </dl>
       </div>            
     </div>
+
+  <%# ------------------------- Add rating form ---------------------------------------- %><%#%>
+  <div class="row justify-content-center">
+    <div class='col-6'>
+      <h2> Add a review </h2>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-1">
+        <%= form_for [@product, @rating] do |form| %>
+          <div class="form-group">
+            <%= form.label :rating %>
+            <%= form.select :rating,  options_for_select( (0..5)), class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :description %>
+            <%= form.text_area :description, class: 'form-control' %>
+          </div>
+
+          <%= form.submit 'Add a review', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+
     <%# ------------------------- Rating list ---------------------------------------- %>
     <%# example code from https://bootsnipp.com/snippets/M5obX %>
     <div class="row justify-content-center">
       <div class='col-6'>
-      <h2> Ratings </h2>
+        <h2> Reviews </h2>
       </div>
     </div>
     <div class="row">
