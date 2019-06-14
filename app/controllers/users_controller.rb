@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
-    puts 'empty user'
-    puts @user
   end
 
 def create
