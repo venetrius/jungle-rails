@@ -1,5 +1,4 @@
-class Admin::CategoriesController < ApplicationController
-  before_filter :http_authenticate 
+class Admin::CategoriesController < Admin::BaseController
 
   def index
     @categories = Category.order(id: :desc).all
