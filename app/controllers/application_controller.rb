@@ -26,8 +26,9 @@ class ApplicationController < ActionController::Base
   helper_method :order_products
 
   def product_ratings
-    @product_ratings ||= @product.ratings.all.map{|rating| 
-         {rating:rating.rating, description: rating.description, user: rating.user.email, created_at: rating.created_at}} 
+    @product_ratings ||= @product.ratings.all
+      .map{|rating| {rating:rating.rating, description: rating.description, user: rating.user.email, created_at: rating.created_at}} 
+      .sort { |a, b| b[:created_at] <=> a[:created_at] }
   end
   helper_method :product_ratings
 
