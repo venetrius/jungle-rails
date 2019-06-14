@@ -95,11 +95,14 @@
                     <% (1..(5 - rating[:rating])).each do |n| %>
                       <span class="float-right"><i class="fa fa-star"></i></span>
                     <% end %>
-                    <%# ------------------------- End stars---------------------------------------- %>         
-                    <%= link_to raw("<i class=\"fa fa-trash\"> Delete</i>"), 
-                    product_rating_path(@product, rating), 
-                    class: "btn btn-alert",
-                    method: :delete %>
+                    <%# ------------------------- End stars---------------------------------------- %>   
+                    <% if rating[:own] %>      
+                      <%= link_to raw("<i class=\"fa fa-trash\"> Delete</i>"), 
+                        product_rating_path(@product, rating), 
+                        class: "btn btn-alert",
+                        method: :delete
+                      %>
+                    <% end %>
                   </p>
                   <div class="clearfix"></div>
                   <p><%= rating[:description] %></p>
