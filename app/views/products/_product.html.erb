@@ -4,6 +4,20 @@
       <%= image_tag product.image.thumb, alt: product.name %>
       <h4><%= product.name %></h4>
     <% end %>
+    <strong> Ratings (<%= product.ratings.length %>): </strong>
+      <% if product.ratings.length == 0 %>
+        <i> No ratings yet </i>
+      <% else %>
+        <%# ------------------------- Add stars---------------------------------------- %>
+        <% (1..average_rating(product)).each do |n| %>
+          <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+        <% end %>
+        <% (1..(5 - average_rating(product))).each do |n| %>
+          <span class="float-right"><i class="fa fa-star"></i></span>
+        <% end %>
+        <%# ------------------------- End stars---------------------------------------- %>   
+      <% end %>
+    
   </header>
   <p class="description">
     <%= product.description %>
