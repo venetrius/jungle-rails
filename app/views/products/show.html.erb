@@ -25,27 +25,45 @@
         </dl>
       </div>            
     </div>
-    <%# Rating list %>
+    <%# ------------------------- Rating list ---------------------------------------- %>
+    <%# example code from https://bootsnipp.com/snippets/M5obX %>
+    <div class="row justify-content-center">
+      <div class='col-6'>
+      <h2> Ratings </h2>
+      </div>
+    </div>
     <div class="row">
       <div class="col-sm-2">
         </div>
       <div class="col-sm-10">
         <% product_ratings.each do |rating| %>
-            <dl class="dl-horizontal">
-            <dt> <%= rating[:rating] %> </dt>
-            <dd> <%= rating[:user] %> </dd>
-            <dt> Description </dt>
-            <dd> <%= rating[:description] %> </dd>
-            <dt> Date </dt>
-            <dd> <%= rating[:created_at] %> </dd>
-          </dl>
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-2">
+                  <p class="text-secondary text-center"><%=rating[:created_at]%></p>
+                </div>
+                <div class="col-md-10">
+                  <p>
+                    <span class="float-left"><strong><%= rating[:user] %></strong></span>
+                    <%# ------------------------- Add stars---------------------------------------- %>
+                    <% (1..rating[:rating]).each do |n| %>
+                      <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                    <% end %>
+                    <% (1..(5 - rating[:rating])).each do |n| %>
+                      <span class="float-right"><i class="fa fa-star"></i></span>
+                    <% end %>
+                    <%# ------------------------- End stars---------------------------------------- %>  
+                  </p>
+                  <div class="clearfix"></div>
+                  <p><%= rating[:description] %></p>
+                </div>
+              </div>
+            </div>
+          </div>
         <%end %>
       </div>
     </div>
-
   </article>
-
-
-
 </section>
 
