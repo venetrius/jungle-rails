@@ -1,4 +1,5 @@
 class RatingsController < ApplicationController
+  before_filter :authenticated 
 
   def create
     product_id = params.require(:product_id)
